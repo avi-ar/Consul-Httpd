@@ -1,0 +1,16 @@
+{
+    "node_name": "webserver",
+    "service": {
+            "id":"HttpdServer",
+            "name":"HttpdServer",
+            "address":"192.168.99.101",
+            "port": 8080,
+            "check": {
+                    "id":"web",
+                    "name":"check on web app on port 8080",
+                    "tcp": "192.168.99.101:8080",
+                    "interval": "30s",
+                    "timeout": "5s"
+            }
+    }
+}
