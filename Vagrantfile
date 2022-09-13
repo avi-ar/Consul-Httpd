@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
     serverIp = "192.168.99.100"
     server.vm.network "private_network", ip: serverIp
     server.vm.provision "file", 
-      source: "C://Users//avian//projects//VagrantTest//consul.hcl",
+      source: "consul.hcl",
       destination:"/tmp/consul.hcl"
     server.vm.provision "shell",
       inline: "mv /tmp/consul.hcl /etc/consul.d/consul.hcl"
@@ -32,18 +32,18 @@ Vagrant.configure("2") do |config|
     serverIPs = "192.168.99.101"
     web.vm.network "private_network", ip: serverIPs
     web.vm.provision "file", 
-      source: "C://Users//avian//projects//VagrantTest//consul-agent.hcl",
+      source: "consul-agent.hcl",
       destination:"/tmp/consul.hcl"
     web.vm.provision "shell",
       inline: "mv /tmp/consul.hcl /etc/consul.d/consul.hcl"
     web.vm.provision "shell", inline: "service consul start"
     web.vm.provision "file", 
-      source: "C://Users//avian//projects//VagrantTest//ports.conf",
+      source: "ports.conf",
       destination:"/tmp/ports.conf"
     web.vm.provision "shell",
       inline: "mv /tmp/ports.conf /etc/apache2/ports.conf"
     web.vm.provision "file", 
-      source: "C://Users//avian//projects//VagrantTest//service.json",
+      source: "service.json",
       destination:"/home/vagrant/service.json"
     web.vm.provision "shell",
       inline: "consul services register service.json"
